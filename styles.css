@@ -10,8 +10,10 @@ body {
     color: #e4e4e7;
     padding: 40px;
     display: flex;
-    flex-direction: column; /*itens um abaixo do outro */
-    align-items: center; /* texto centralizado */
+    flex-direction: column;
+    /*itens um abaixo do outro */
+    align-items: center;
+    /* texto centralizado */
 }
 
 h1 {
@@ -30,7 +32,8 @@ p {
 }
 
 textarea {
-    resize: none;  /* textarea sem redimensionamento */
+    resize: none;
+    /* textarea sem redimensionamento */
     width: 100%;
     max-width: 640px;
     padding: 16px;
@@ -38,7 +41,8 @@ textarea {
     border-radius: 10px;
     background: #141419;
     color: #fafafa;
-    outline: none  /* desativar linha de destaque externa do textarea */
+    outline: none
+        /* desativar linha de destaque externa do textarea */
 }
 
 button {
@@ -51,5 +55,29 @@ button {
     border: none;
     padding: 14px;
     cursor: pointer;
-    margin-top: 10px;  
+    margin-top: 10px;
 }
+
+.resultado-codigo {
+    background-color: rgb(29, 29, 29);
+    border: 1px solid #27272a;
+    width: 100%;
+    max-width: 485px;
+    border-radius: 10px;
+}
+
+.bloco-codigo {
+    background-color: #141419;
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 16px 16px 1px;
+    color: #34d399;
+    overflow: auto;
+    width: 100%;
+    max-width: 640px;
+}
+ .right {
+    width: 100%;
+    max-width: 485px;
+ }
