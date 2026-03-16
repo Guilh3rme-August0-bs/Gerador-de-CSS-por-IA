@@ -14,20 +14,25 @@
 </head>
 
 <body>
-    <div class="left">
+
     <h1>Gerador de CSS <span>por IA</span></h1>
 
     <p>Digite um prompt para criar o elemento CSS que você deseja</p>
 
     <textarea rows="3" placeholder="Digite aqui" id="prompt-box"></textarea>
     <button id="botao">Gerar CSS</button>
-    <p class="bloco-codigo"></p>
-</div>
-<div class="right">
-    <iframe class="resultado-codigo" src="" frameborder="0"></iframe>
-</div>
-
-<script src="script.js"></script>
+    
+    <div class="boxes">
+        <fieldset>
+            <legend>Código</legend>
+        <pre class="bloco-codigo"></pre>
+        </fieldset>
+        <fieldset>
+            <legend>Preview</legend>
+        <iframe class="resultado-codigo" src="" frameborder="0"></iframe>
+        </fieldset>
+    </div>
+    <script src="script.js"></script>
 
 </body>
 
