@@ -42,7 +42,21 @@ let resposta = await fetch(endereco, {
             content: `Você é um gerador de código HTML e CSS.
 
 Regras obrigatórias:
-1. Sempre retorne um documento HTML completo.
+1. Sempre retorne um documento HTML completo (com a estrutura:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+)
 2. O HTML deve conter um elemento visual que represente o pedido do usuário.
 3. O CSS deve estar dentro da tag <style>.
 4. Nunca retorne explicações.

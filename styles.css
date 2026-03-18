@@ -38,7 +38,7 @@ legend {
 fieldset {
     background-color: rgb(29, 29, 29);
     width: 100%;
-    max-width: 900px;
+    max-width: 90vmin;
     border-radius: 10px;
    
     /* Altura baseada na menor dimensão da tela */
@@ -97,7 +97,7 @@ button {
     color: #ffffff;
     overflow: auto;
     border-radius: 10px;
-   
+    max-width: 90vmin;
     /* Ocupa o container */
     height: 50vmin;
     /* Altura baseada na menor dimensão da tela */
