@@ -1,0 +1,26 @@
+{
+  "name": "projeto-devclub---com-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guilh3rme-August0-bs/Gerador-de-CSS-por-IA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Guilh3rme-August0-bs/Gerador-de-CSS-por-IA/issues"
+  },
+  "homepage": "https://github.com/Guilh3rme-August0-bs/Gerador-de-CSS-por-IA#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
+  }
+}
