@@ -57,7 +57,10 @@ app.post('/generate', async (req, res) => {
                     3. CSS dentro de <style>
                     4. Sem explicações
                     5. Sem markdown
-                    6. Renderizável em iframe`
+                    6. Renderizável em iframe
+                    7. Sempre que receber palavras ilegíveis, sequências de números ou letras aleatórias, ou até mesmo 
+                    requisições com menos de 4 caracteres, retorne uma mensagem dizendo que aquilo não pode ser gerado, 
+                    sem nenhum elemento html incluso nela`
                 },
 
                 {
