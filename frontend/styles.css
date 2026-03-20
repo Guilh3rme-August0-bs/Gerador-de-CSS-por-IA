@@ -131,6 +131,12 @@ button {
     width: 100%;
 }
 
+@media (max-width: 650px) {
+    .boxes {
+        flex-direction: column;
+    }
+}
+
 ::-webkit-scrollbar {
     background-color: #7a7a7a
 }
