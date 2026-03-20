@@ -7,8 +7,7 @@ let prompt_box = document.getElementById('prompt-box');
 const loading = document.getElementById('spinner');
 
 // URL do backend (agora você não chama mais a API direto)
-//let endereco = "https://gerador-de-css-por-ia.onrender.com/generate" 
-let endereco = "http://localhost:3000/generate"
+let endereco = "https://gerador-de-css-por-ia.onrender.com/generate" 
 
 async function gerarCodigo() {
 
