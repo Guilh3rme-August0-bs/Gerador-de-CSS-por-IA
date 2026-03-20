@@ -6,7 +6,7 @@ let botao = document.getElementById('botao');
 let prompt_box = document.getElementById('prompt-box');
 
 // URL do backend (agora você não chama mais a API direto)
-let endereco = "https://gerador-de-css-por-ia.onrender.com/"
+let endereco = "https://gerador-de-css-por-ia.onrender.com/generate"
 //"http://localhost:3000/generate"
 
 async function gerarCodigo() {
