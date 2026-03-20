@@ -85,6 +85,10 @@ app.post('/generate', async (req, res) => {
 
 })
 
+app.get('/health', (req, res) => {
+    res.send('OK!')
+})
+
 // Inicializa o servidor na porta definida
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`)
