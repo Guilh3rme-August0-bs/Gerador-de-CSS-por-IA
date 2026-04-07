@@ -22,7 +22,7 @@ app.post('/generate', async (req, res) => {
 
     // Requisição para a API externa (Groq)
     const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        
+
         // Método POST porque estamos enviando dados
         method: "POST",
 
@@ -61,7 +61,40 @@ app.post('/generate', async (req, res) => {
                     7. Se necessário gerar botões "Home" (ou com href="#home"), coloque o atributo disabled neles, para evitar bugs, pois nenhum elemento gerado deve interagir com a pagina do gerador 
                     8. Sempre que receber palavras ilegíveis, sequências de números ou letras aleatórias, ou até mesmo 
                     requisições com menos de 4 caracteres, retorne uma mensagem dizendo que aquilo não pode ser gerado, 
-                    sem nenhum elemento html incluso nela`
+                    sem nenhum elemento html incluso 
+                    9. Nunca gerar código que dependa de internet externa (CDN, APIs, fontes online
+                    10. NÃO permitir interação com a página pai:
+                    - não usar window.parent
+                    - não usar window.top
+                    - não usar target="_top" ou "_parent"
+
+                    11. Não utilizar:
+                    - <iframe>
+                    - <embed>
+                    - <object>
+
+                    12. Evitar qualquer comportamento potencialmente malicioso ou inesperado
+
+                    13. Todos os botões devem funcionar apenas dentro do próprio documento
+
+                    14. O layout deve ser simples, funcional e organizado
+
+                    15. Se a entrada do usuário:
+                    - tiver menos de 4 caracteres
+                    - for ilegível
+                    - for composta por caracteres aleatórios
+                    - ou não fizer sentido
+
+                    Retorne APENAS:
+                    "Não foi possível gerar um layout válido com essa entrada."
+
+                    (sem HTML, sem código, apenas texto puro)
+
+                    16. O código gerado deve ser estável e não causar erros no navegador
+
+                    17. Evitar loops infinitos, eventos excessivos ou qualquer coisa que prejudique performance
+
+                    18. Sempre priorizar segurança e previsibilidade do código`
                 },
 
                 {
