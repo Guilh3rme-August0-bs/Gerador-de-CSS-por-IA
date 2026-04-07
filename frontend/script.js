@@ -7,7 +7,7 @@ let prompt_box = document.getElementById('prompt-box');
 const loading = document.getElementById('spinner');
 
 // URL do backend (agora você não chama mais a API direto)
-let endereco = "https://gerador-de-css-por-ia.onrender.com/generate" 
+let endereco = "https://gerador-de-css-por-ia.onrender.com/generate"
 
 async function gerarCodigo() {
 
@@ -55,7 +55,11 @@ async function gerarCodigo() {
 
     // Renderiza o HTML dentro do iframe
     resultadoCodigo.srcdoc = resultado
+
+    const telaCheia = document.getElementsByClassName('fullScreen')[0]
+    telaCheia.style.display = 'flex'
 }
+
 
 // Evento de clique no botão
 botao.addEventListener('click', function () {
@@ -70,3 +74,28 @@ botao.addEventListener('click', function () {
 
     }
 })
+
+function criarModal() {
+
+    const modal = document.createElement('div')
+    const modalDiv = document.createElement('div')
+    const modalIframe = document.createElement('iframe')
+    const fecharBotao = document.createElement('buton')
+
+    modal.classList.add('modal')
+    fecharBotao.classList.add('fecharBotao')
+    fecharBotao.innerHTML = `<i class="fa-solid fa-xmark"></i>`
+    modalDiv.classList.add('modalDiv')
+    modalIframe.classList.add('modalIframe')
+
+    document.body.appendChild(modal)
+    modalIframe.classList.add('modalIframe')
+    modalDiv.appendChild(fecharBotao)
+    modal.appendChild(modalDiv)
+    modalDiv.appendChild(modalIframe)
+
+
+    fecharBotao.addEventListener('click', function () { modal.remove() })
+    modalIframe.srcdoc = resultadoCodigo.srcdoc
+
+}
