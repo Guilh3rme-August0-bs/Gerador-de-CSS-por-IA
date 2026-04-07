@@ -58,7 +58,7 @@ app.post('/generate', async (req, res) => {
                     4. Sem explicações
                     5. Sem markdown
                     6. Renderizável em iframe
-                    7. Se necessário gerar botões "Home", coloque o atributo disabled neles, para evitar bugs 
+                    7. Se necessário gerar botões "Home" (ou com href="#home"), coloque o atributo disabled neles, para evitar bugs, pois nenhum elemento gerado deve interagir com a pagina do gerador 
                     8. Sempre que receber palavras ilegíveis, sequências de números ou letras aleatórias, ou até mesmo 
                     requisições com menos de 4 caracteres, retorne uma mensagem dizendo que aquilo não pode ser gerado, 
                     sem nenhum elemento html incluso nela`
