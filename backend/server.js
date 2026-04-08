@@ -152,7 +152,7 @@ O layout DEVE permanecer legível, organizado e funcional em telas pequenas.
 - eventos onclick
 - manipulação de elementos com JavaScript (display: none/block)
 
-Nunca utilizar links (<a>) para navegação.
+Nunca utilizar links (<a>) ou o atributo href="#" para navegação.
 
 24. O código deve ser completamente isolado e NÃO pode, em hipótese alguma, interagir com qualquer elemento fora do próprio documento.
 
