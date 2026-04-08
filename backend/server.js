@@ -96,7 +96,12 @@ app.post('/generate', async (req, res) => {
 
                     18. Sempre priorizar segurança e previsibilidade do código
                     
-                    19. Se o prompt solicitar a criação de uma PÁGINA ou SITE, faça com que ela seja responsiva tanto em telas de celulares (abaixo de 650px de largura), quanto telas de computadores de mesa ou notebooks`
+                    19. Se o prompt solicitar a criação de uma PÁGINA ou SITE, faça com que ela seja responsiva 
+                    tanto em telas de celulares (abaixo de 650px de largura), quanto telas de computadores de mesa ou notebooks
+                    
+                    20. Caso a geração de elementos com ícones seja necessárias, os ícones podem vir do font awesome
+                    
+                    21. Se a geração de uma PÁGINA ou SITE for solicitada no prompt, gere ela com um fundo branco por padrão`
                 },
 
                 {
