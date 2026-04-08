@@ -140,6 +140,11 @@ button {
     .boxes {
         flex-direction: column;
     }
+
+    .modalDiv {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 ::-webkit-scrollbar {
