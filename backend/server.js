@@ -96,7 +96,7 @@ app.post('/generate', async (req, res) => {
 
                     18. Sempre priorizar segurança e previsibilidade do código
                     
-                    19. Se o prompt solicitar a criação de uma PÁGINA ou SITE, faça com que ela seja responsiva em telas de celulares (abaixo de 650px de largura)`
+                    19. Se o prompt solicitar a criação de uma PÁGINA ou SITE, faça com que ela seja responsiva tanto em telas de celulares (abaixo de 650px de largura), quanto telas de computadores de mesa ou notebooks`
                 },
 
                 {
