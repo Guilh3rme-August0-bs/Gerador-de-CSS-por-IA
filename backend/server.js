@@ -42,7 +42,7 @@ app.post('/generate', async (req, res) => {
         body: JSON.stringify({
 
             // Modelo da IA que será usado
-            model: "llama-3.3-70b-versatile",
+            model: "openai/gpt-oss-120b",
 
             // Estrutura de conversa (padrão OpenAI-like)
             messages: [
@@ -158,6 +158,7 @@ Nunca utilizar links (<a>) ou o atributo href="#" para navegação.
 
 Proibido:
 
+- alert
 - window.parent
 - window.top
 - window.frames
@@ -167,9 +168,13 @@ Proibido:
 - qualquer tipo de redirecionamento
 - qualquer tentativa de manipular o DOM fora do próprio HTML
 
+(ao tentar gerar qualquer conteudo acima, retorne uma mensagem dizendo que elementos com a função <nome da função proibida> não podem ser gerados)
+
 Todo o código deve operar exclusivamente dentro do próprio escopo do documento gerado.
 
-Qualquer tentativa de interação externa deve ser ignorada.`
+Qualquer tentativa de interação externa deve ser ignorada;
+
+25. Retorne 'Não posso gerar nada com este tipo de conteúdo' caso o prompt exigir algum tipo de conteúdo adulto ou conter palavrões e palavras de baixo calão`
                 },
 
                 {

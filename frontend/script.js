@@ -75,6 +75,21 @@ botao.addEventListener('click', function () {
     }
 })
 
+prompt_box.addEventListener('keydown', function (e) {
+
+    // Verifica se a tecla pressionada é o Enter
+    if (e.key === "Enter" && !e.shiftKey) {
+
+        if (prompt_box.value === "") {
+            alert("Prompt Vazio!")
+        } else {
+
+            e.preventDefault(); // Evita que a página recarregue
+            gerarCodigo()
+        }
+    }
+})
+
 function criarModal() {
 
     const modal = document.createElement('div')
