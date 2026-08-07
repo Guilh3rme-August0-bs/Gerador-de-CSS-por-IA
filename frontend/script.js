@@ -6,7 +6,7 @@ let botao = document.getElementById('botao');
 let prompt_box = document.getElementById('prompt-box');
 const loading = document.getElementById('spinner');
 
-let endereco = "http://localhost:3000/generate"
+let endereco = "https://gerador-de-css-por-ia.onrender.com/generate"
 
 async function gerarCodigo() {
 
