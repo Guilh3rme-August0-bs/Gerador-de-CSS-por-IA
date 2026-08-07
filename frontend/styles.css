@@ -40,7 +40,7 @@ fieldset {
     width: 100%;
     max-width: 90vmin;
     border-radius: 10px;
-   
+
     /* Altura baseada na menor dimensão da tela */
     border: none;
 }
@@ -108,8 +108,18 @@ button {
 }
 
 @keyframes spin {
+<<<<<<< HEAD
     from {transform: rotate(0deg)}
     to {transform: rotate(360deg)}
+=======
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+>>>>>>> main
 }
 
 .fa-solid.fa-spinner {
@@ -117,7 +127,11 @@ button {
     color: #ffffff;
     animation: spin 0.6s linear infinite;
     font-size: 28px;
+<<<<<<< HEAD
     margin-top: 10px; 
+=======
+    margin-top: 10px;
+>>>>>>> main
 }
 
 .boxes {
@@ -131,6 +145,7 @@ button {
     width: 100%;
 }
 
+
 ::-webkit-scrollbar {
     background-color: #7a7a7a
 }
@@ -143,4 +158,85 @@ button {
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 6px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modalDiv {
+    display: flex;
+    background: #414141c2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    height: 80%;
+    width: 80%;
+    position: relative;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    padding: 30px 5px 30px 30px;
+}
+
+.modalIframe {
+    height: 100%;
+    width: 100%;
+}
+
+.fecharBotao {
+    background-color: red;
+    border-radius: 7px;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: -24px;
+    right: 1px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.fullScreen {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.footer-menu {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.buttonDiv {
+    display: flex;
+    width: 180vmin;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media (max-width: 650px) {
+    .boxes {
+        flex-direction: column;
+    }
+
+    .modalDiv {
+        width: 100%;
+        height: 100%;
+    }
 }

@@ -13,7 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Guilh3rme-August0-bs/Gerador-de-CSS-por-IA/issues"
   },
