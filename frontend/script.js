@@ -1,33 +1,18 @@
-<<<<<<< HEAD
 // Elementos da interface
-let blocoCodigo = document.querySelector('.bloco-codigo') // onde o código será exibido
-let resultadoCodigo = document.querySelector('.resultado-codigo') // iframe onde o código será renderizado
-=======
-let blocoCodigo = document.querySelector('.bloco-codigo') 
-let resultadoCodigo = document.querySelector('.resultado-codigo')
->>>>>>> main
+let blocoCodigo = document.querySelector('.bloco-codigo')
+let resultadoCodigo = document.querySelector('.resultado-codigo') 
 
 let botao = document.getElementById('botao');
 let prompt_box = document.getElementById('prompt-box');
 const loading = document.getElementById('spinner');
 
-<<<<<<< HEAD
-// URL do backend (agora você não chama mais a API direto)
-//let endereco = "https://gerador-de-css-por-ia.onrender.com/generate" 
 let endereco = "http://localhost:3000/generate"
-=======
-let endereco = "https://gerador-de-css-por-ia.onrender.com/generate"
->>>>>>> main
 
 async function gerarCodigo() {
 
     botao.style.display = 'none';
     loading.style.display = 'block';
 
-<<<<<<< HEAD
-    // Requisição para o SEU backend (não mais para a API externa)
-=======
->>>>>>> main
     let resposta = await fetch(endereco, {
 
         method: "POST",
@@ -36,19 +21,11 @@ async function gerarCodigo() {
             "Content-Type": "application/json"
         },
 
-<<<<<<< HEAD
-        // Envia o prompt digitado pelo usuário
-=======
->>>>>>> main
         body: JSON.stringify({
             prompt: prompt_box.value
         })
     })
 
-<<<<<<< HEAD
-    // VERIFICA SE DEU ERRO
-=======
->>>>>>> main
     if (!resposta.ok) {
         const textoErro = await resposta.text()
         console.error("Erro do servidor:", textoErro)
@@ -60,41 +37,12 @@ async function gerarCodigo() {
         return
     }
 
-<<<<<<< HEAD
-    // Converte resposta do backend
     let dados = await resposta.json();
-
-    // Recebe o resultado já processado pelo backend
-=======
-    let dados = await resposta.json();
->>>>>>> main
     let resultado = dados.resultado
 
     botao.style.display = 'initial';
     loading.style.display = 'none';
 
-<<<<<<< HEAD
-    // Exibe o código como texto
-    blocoCodigo.textContent = resultado
-
-    // Renderiza o HTML dentro do iframe
-    resultadoCodigo.srcdoc = resultado
-}
-
-// Evento de clique no botão
-botao.addEventListener('click', function () {
-
-    // Validação simples para evitar requisição vazia
-    if (prompt_box.value === "") {
-        alert("Prompt Vazio!")
-    } else {
-
-
-        gerarCodigo()
-
-    }
-})
-=======
     blocoCodigo.textContent = resultado
 
     resultadoCodigo.srcdoc = resultado
@@ -151,4 +99,3 @@ function criarModal() {
     modalIframe.srcdoc = resultadoCodigo.srcdoc
 
 }
->>>>>>> main
