@@ -14,6 +14,58 @@ body {
     align-items: center;
 }
 
+body.server-offline {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #272727, #161616);
+    color: #dadada;
+    padding: 20px;
+}
+
+.offline-container {
+    width: min(90vw, 480px);
+    background: #232323;
+    border: 1px solid #dbe3ef;
+    border-radius: 18px;
+    box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
+    padding: 32px 24px;
+    text-align: center;
+}
+
+.offline-icon {
+    font-size: 52px;
+    margin-bottom: 12px;
+}
+
+.offline-container h2 {
+    margin: 0 0 10px;
+    color: #b33434;
+    font-size: 28px;
+}
+
+.offline-container p {
+    margin: 0 0 22px;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.offline-button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.offline-button:hover {
+    background: #1d4ed8;
+}
+
 h1 {
     font-size: 32px;
     color: #fafafa;
@@ -38,13 +90,11 @@ fieldset {
     width: 100%;
     max-width: 90vmin;
     border-radius: 10px;
-
-    /* Altura baseada na menor dimensão da tela */
     border: none;
 }
 
 textarea {
-    resize:vertical;
+    resize: vertical;
     width: 100%;
     margin-top: 20px;
     max-width: 640px;
@@ -53,8 +103,7 @@ textarea {
     border-radius: 10px;
     background: #141419;
     color: #fafafa;
-    outline: none
-
+    outline: none;
 }
 
 button {
@@ -77,8 +126,6 @@ button {
     width: 100%;
     border-radius: 10px;
     padding: 27px;
-
-    width: 100%;
     height: 50vmin;
     border: none;
     transition: all 0.3s ease;
@@ -91,12 +138,10 @@ button {
     margin: 0;
     color: #ffffff;
     overflow: auto;
-    border-radius: 10px;
     max-width: 90vmin;
     height: 50vmin;
     border: none;
     transition: all 0.3s ease;
-
 }
 
 @keyframes spin {
@@ -127,7 +172,6 @@ button {
     margin-top: 20px;
     width: 100%;
 }
-
 
 ::-webkit-scrollbar {
     background-color: #7a7a7a

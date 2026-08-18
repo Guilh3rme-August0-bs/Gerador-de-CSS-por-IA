@@ -165,6 +165,10 @@ Qualquer tentativa de interação externa deve ser ignorada;
 
 })
 
+app.get('/health', (req, res) => {
+    res.send('OK!')
+})
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`)
 })
