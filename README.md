@@ -1,127 +1,192 @@
-# Gerador de CSS integrado com llama AI
+# Gerador de CSS integrado com IA
 
-![Node.js](https://img.shields.io/badge/node.js-%23339933?style=for-the-badge&logo=node.js&logoColor=white)
-![npm](https://img.shields.io/badge/npm-%23CB3837?style=for-the-badge&logo=npm&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![HTML5](https://img.shields.io/badge/HTML5-%23E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-%231572B6?style=for-the-badge&logo=css3&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-%231572B6?style=for-the-badge&logo=css&logoColor=white)
+![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
 
-## Visão geral
+<a href="https://groq.com" target="_blank" rel="noopener noreferrer">
+  <img
+    src="https://console.groq.com/powered-by-groq-light.svg"
+    alt="Powered by Groq for fast inference."
+    width="180"
+  />
+</a>
 
-Este projeto é uma aplicação web com duas partes:
+#
 
-- frontend: interface estática da aplicação
-- backend: servidor Node.js responsável por fornecer dados e lógica de negócio
+Aplicação web que utiliza inteligência artificial para gerar interfaces HTML e CSS a partir de descrições fornecidas pelo usuário.
 
-Estrutura do projeto:
+O projeto possui um backend desenvolvido com Express e adaptado para uma **arquitetura serverless utilizando Cloudflare Workers**, responsável pela comunicação com a API da Groq.
 
-- frontend
-  - `index.html`
-  - `script.js`
-  - `styles.css`
-  - `src/assets/`
-- backend
-  - .env
-  - `.gitignore`
-  - `package.json`
-  - `server.js`
+## Links
 
-## Requisitos
+**Aplicação:**
+[https://gerador-de-css-por-ia.vercel.app/](https://gerador-de-css-por-ia.vercel.app/)
 
-- Node.js instalado (recomendado v16 ou superior)
-- NPM ou Yarn
-- Navegador moderno
+**Backend:**
+[https://gerador-de-css-por-ia.gsilva12401321.workers.dev/](https://gerador-de-css-por-ia.gsilva12401321.workers.dev/)
 
-## Estrutura do frontend
+## Demonstração
 
-- `index.html`: ponto de entrada da aplicação frontend
-- `script.js`: lógica de interação e comunicação com o backend
-- `styles.css`: estilos visuais da interface
-- `src/assets/`: recursos estáticos
+[**Acessar aplicação →**](https://gerador-de-css-por-ia.vercel.app/)
 
-## Estrutura do backend
+## Sobre o projeto
 
-- `server.js`: servidor Node.js com rotas e configuração
-- `package.json`: dependências e scripts
-- .env: variáveis de ambiente para configuração do servidor
+A aplicação permite descrever uma interface utilizando linguagem natural e receber como resultado um documento HTML completo, contendo estrutura, estilos e comportamentos.
+
+O backend foi originalmente desenvolvido para execução em um servidor Node.js tradicional e posteriormente adaptado para o ambiente serverless do Cloudflare Workers, mantendo a API REST e a integração com a Groq.
+
+## Funcionalidades
+
+- Geração de interfaces HTML e CSS a partir de prompts.
+- Integração com a API da Groq.
+- Renderização do código gerado em ambiente isolado.
+- Validação e restrição de conteúdo potencialmente inseguro.
+- Geração de layouts responsivos.
+- Backend serverless executado sob demanda.
+
+## Segurança
+
+Como a aplicação executa código gerado por inteligência artificial, foram implementadas restrições para reduzir comportamentos inesperados durante a renderização.
+
+Entre elas:
+
+- Bloqueio de `iframe`, `embed` e `object`.
+- Restrição de acesso ao documento pai.
+- Bloqueio de navegação e redirecionamentos externos.
+- Restrição de conteúdos inadequados.
+- Limitação de comportamentos que possam prejudicar o desempenho.
+
+A chave da API da Groq é armazenada como **secret no Cloudflare Worker** e não é exposta ao frontend.
+
+## Tecnologias
+
+### Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend
+
+- Node.js
+- Express
+- Cloudflare Workers
+- Wrangler
+
+### Integrações
+
+- Groq API
+
+## Estrutura do projeto
+
+```text
+frontend/
+├── index.html
+├── script.js
+├── styles.css
+└── src/
+    └── assets/
+
+backend/
+├── server.js
+├── wrangler.toml
+├── package.json
+└── .gitignore
+````
+
+## API
+
+### `POST /generate`
+
+Recebe um prompt e solicita à API da Groq a geração da interface.
+
+**Requisição:**
+
+```json
+{
+  "prompt": "Crie uma página inicial para uma cafeteria"
+}
+```
+
+**Resposta:**
+
+```json
+{
+  "resultado": "..."
+}
+```
 
 ## Configuração
 
-1. Abra o terminal.
-2. Navegue até a pasta principal do backend:
+### Requisitos
+
+* Node.js
+* NPM
+* Conta na Cloudflare
+* Chave da API da Groq
+
+### Instalação
+
+Entre na pasta do backend:
 
 ```bash
 cd backend
 ```
 
-3. Instale as dependências:
+Instale as dependências:
 
 ```bash
 npm install
 ```
 
-4. Crie e configure o arquivo .env.
-
-A variável obrigatória no arquivo .env deve ser:
-
-```env
-API_KEY=seu_valor_aqui
-```
-
-## Executando o backend
-
-Inicie o servidor backend:
+Faça login na Cloudflare:
 
 ```bash
-npm start
+npx wrangler login
 ```
 
-Se o `package.json` usar um script diferente, execute:
+Configure a chave da Groq como secret:
 
 ```bash
-npm run dev
+npx wrangler secret put API_KEY
 ```
 
-O servidor deve ficar disponível no endereço configurado no .env, por exemplo:
+### Desenvolvimento local
+
+Inicie o Worker:
 
 ```bash
-http://localhost:3000
+npx wrangler dev
 ```
 
-## Executando o frontend
+Por padrão, o backend estará disponível em:
 
-### Opção 1: Abrir diretamente
+```text
+http://localhost:8787
+```
 
-Abra index.html no navegador.
+Execute o frontend utilizando um servidor HTTP local, como o Live Server.
 
-### Opção 2: Usar um servidor local
+### Deploy
 
-Navegue até a pasta do frontend:
+Dentro da pasta `backend`, execute:
 
 ```bash
-cd frontend
+npx wrangler deploy
 ```
 
-Em seguida, use uma extensão como Live Server ou execute:
+## Aprendizados
 
-```bash
-npx http-server
-```
+O projeto permitiu aprofundar conhecimentos em:
 
-## Uso
-
-- O frontend consome o backend por meio de requisições HTTP.
-- Ajuste a URL da API no script.js para apontar para o backend em execução.
-- Verifique se o servidor backend está ativo antes de usar o frontend.
-
-## Rotas do backend
-
-Verifique o conteúdo de server.js para entender os endpoints disponíveis. Normalmente estarão em forma de:
-
-- `GET /`
-- `GET /api/...`
-- `POST /api/...`
-
-## Licença
-
-Projeto sugerido como MIT. Ajuste conforme necessário no arquivo `LICENSE`.
+* Desenvolvimento de APIs REST.
+* Integração com APIs de inteligência artificial.
+* Node.js e Express.
+* CORS e gerenciamento de secrets.
+* Arquitetura serverless.
+* Cloudflare Workers.
+* Deploy de aplicações em cloud.
+* Segurança na execução de conteúdo gerado por IA.
+* Adaptação de uma aplicação Node.js tradicional para um ambiente serverless.
