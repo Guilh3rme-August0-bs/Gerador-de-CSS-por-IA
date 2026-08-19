@@ -1,0 +1,4 @@
+name = "gerador-de-css-por-ia"
+main = "server.js"
+compatibility_date = "2026-08-19"
+compatibility_flags = [ "nodejs_compat" ]
