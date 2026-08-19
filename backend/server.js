@@ -1,45 +1,31 @@
-const corsHeaders = {
-    "Access-Control-Allow-Origin": "http://localhost:5500",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type"
-}
+import express from 'express'
+import 'dotenv/config'
+import cors from 'cors'
 
-export default {
-    async fetch(request, env) {
-        if (request.method === "OPTIONS") {
-            return new Response(null, {
-                status: 204,
-                headers: corsHeaders
-            })
-        }
+const app = express()
+const PORT = 3000
 
-        const url = new URL(request.url)
+app.use(cors())
+app.use(express.json())
 
-        if (request.method !== "POST" || url.pathname !== "/generate") {
-            return new Response("Not Found", {
-                status: 404,
-                headers: corsHeaders
-            })
-        }
+app.post('/generate', async (req, res) => {
 
-        try {
-            const body = await request.json()
-            const prompt = body.prompt
+    const prompt = req.body.prompt
+    const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
 
-            const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + env.API_KEY
-                },
-                body: JSON.stringify({
-                    model: "openai/gpt-oss-120b",
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + process.env.API_KEY
+        },
+        body: JSON.stringify({
+            model: "openai/gpt-oss-120b",
 
-                    // Estrutura de conversa (padrão OpenAI-like)
-                    messages: [
-                        {
-                            role: "system",
-                            content: `Você é um gerador de código HTML e CSS seguro para execução dentro de um iframe.
+            // Estrutura de conversa (padrão OpenAI-like)
+            messages: [
+                {
+                    role: "system",
+                    content: `Você é um gerador de código HTML e CSS seguro para execução dentro de um iframe.
 
 Regras obrigatórias:
 
@@ -163,31 +149,26 @@ Todo o código deve operar exclusivamente dentro do próprio escopo do documento
 Qualquer tentativa de interação externa deve ser ignorada;
 
 25. Retorne 'Não posso gerar nada com este tipo de conteúdo' caso o prompt exigir algum tipo de conteúdo adulto ou conter palavrões e palavras de baixo calão`
-                        },
+                },
 
-                        {
-                            role: "user",
-                            content: prompt
-                        }
-                    ]
-                })
-
-            })
-            const dados = await resposta.json()
-            const resultado = dados.choices[0].message.content
-
-            return Response.json(
-                { resultado },
-                { headers: corsHeaders }
-            )
-        } catch (erro) {
-            return Response.json(
-                { erro: "Erro ao gerar o código." },
                 {
-                    status: 500,
-                    headers: corsHeaders
+                    role: "user",
+                    content: prompt
                 }
-            )
-        }
-    }
-}
+            ]
+        })
+    })
+
+    const dados = await resposta.json();
+    const resultado = dados.choices[0].message.content
+    res.json({ resultado })
+
+})
+
+app.get('/health', (req, res) => {
+    res.send('OK!')
+})
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`)
+})

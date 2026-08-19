@@ -1,4 +1,0 @@
-name = "meu-backend-serverless"
-main = "server.js"
-compatibility_date = "2026-08-19"
-compatibility_flags = [ "nodejs_compat" ]

@@ -24,7 +24,6 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14",
-    "wrangler": "^4.124.0"
+    "nodemon": "^3.1.14"
   }
 }

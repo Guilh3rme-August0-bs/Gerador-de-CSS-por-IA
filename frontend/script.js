@@ -6,10 +6,63 @@ let botao = document.getElementById('botao');
 let prompt_box = document.getElementById('prompt-box');
 const loading = document.getElementById('spinner');
 
-//let endereco = "https://gerador-de-css-por-ia.onrender.com"
-let endereco = "http://localhost:8787"
+let endereco = "https://gerador-de-css-por-ia.onrender.com"
+
+function renderServerOffline() {
+    document.body.classList.add('server-offline');
+    document.body.innerHTML = `
+        <div class="offline-container">
+            <div class="offline-icon">⚠️</div>
+            <h2>Servidor indisponível</h2>
+            <p>Não foi possível conectar com o serviço de geração de layouts. Tente novamente em alguns instantes.</p>
+            <button id="retry-server" class="offline-button">Tentar novamente</button>
+        </div>
+    `;
+
+    const retryButton = document.getElementById('retry-server');
+
+    if (retryButton) {
+        retryButton.addEventListener('click', async () => {
+            const ok = await checkServer();
+
+            if (ok) {
+                window.location.reload();
+            }
+        });
+    }
+}
+
+async function checkServer() {
+    try {
+        const resposta = await fetch(`${endereco}/health`);
+        const texto = await resposta.text();
+
+        if (!resposta.ok || texto.trim() !== "OK!") {
+            console.error("Servidor fora do ar:", texto);
+            renderServerOffline();
+            return false;
+        }
+
+        console.log("Servidor funcionando:", texto);
+        document.body.classList.remove('server-offline');
+        return true;
+    } catch (erro) {
+        console.error("Erro ao verificar servidor:", erro);
+        renderServerOffline();
+        return false;
+    }
+}
+
+window.addEventListener('load', async () => {
+    await checkServer();
+});
 
 async function gerarCodigo() {
+    const servidorOk = await checkServer();
+
+    if (!servidorOk) {
+        return;
+    }
 
     botao.style.display = 'none';
     loading.style.display = 'block';
